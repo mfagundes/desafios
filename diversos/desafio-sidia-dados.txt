@@ -1,0 +1,4 @@
+Um dos que eu fiz na ultima entrevista foi o forgottenResults:
+You have just rolled a dice several times. The N roll results that you remember are described by an array A. However, there are F rolls whose results you have forgotten. The arithmetic mean of all the roll results(the sum of all the roll results divided by the number of rolls) equals M.
+Return one of the possible results of the missing rolls? 
+Return [0] if possible rolls doesn't exist!
