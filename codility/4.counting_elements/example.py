@@ -38,12 +38,31 @@ def fast_solution(A, B, m):  # Time complexity O(n+m)
     sum_a = sum(A)  # O(n)
     sum_b = sum(B)  # O(n)
     d = sum_b - sum_a  # O(1)
-    if d % 2 == 1:  # número ímpar (por que?)
+
+    # sendo os arrays inteiros, a solução, conforme explicada abaixo, sempre será False
+    # se a diferença entre as somas for ímpar
+    if d % 2 == 1:
         return False
+
+    # a diferença entre as somas é dividida por 2 e este será o valor que, no swap, será
+    # adicionado à menor soma e subtraído da maior. Assim, para cada valor de B é necessário
+    # checar se no array A existe um inteiro que seja igual ao valor de B menos a metade da
+    # diferença das somas. Isso confirma que, naquele ponto de B, existe em A um valor que
+    # é igual a esse valor de B menos a diferença. Por exemplo:
+    #
+    # a = [1,2,3] (soma = 6)
+    # b = [4,5,7] (soma = 16)
+    3
+    # A diferença entre os arrays é de 10, assim é preciso tirar 5 de um array e somar ao outro
+    # Isso ocorrerá se o valor de B menos a metade da diferença existir em A. No exemplo temos em
+    # B[2] o valor 7, que subtraído da metade da diferença dará 2. Precisamos, então, que o valor
+    # 2 exista no array A. Isso se verifica observando se count[2] > 0
     d //= 2
     count = counting(A, m)
     for i in range(n):
-        if 0 <= B[i] - d and B[i] -d <= m and count [B[i] - d] > 0:
+        # se o valor B[i] subtraído da metade da diferença estiver fora dos conjunto de inteiros
+        # possíveis no problema (0 <= N <= m) não existirá um valor possível em A
+        if 0 <= B[i] - d and B[i] -d <= m and count[B[i] - d] > 0:
             return True
     return False
 
